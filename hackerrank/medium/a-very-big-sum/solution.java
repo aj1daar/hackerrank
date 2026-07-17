@@ -13,26 +13,20 @@ import static java.util.stream.Collectors.toList;
 class Result {
 
     /*
-     * Complete the 'compareTriplets' function below.
+     * Complete the 'aVeryBigSum' function below.
      *
-     * The function is expected to return an INTEGER_ARRAY.
-     * The function accepts following parameters:
-     *  1. INTEGER_ARRAY a
-     *  2. INTEGER_ARRAY b
+     * The function is expected to return a LONG_INTEGER.
+     * The function accepts LONG_INTEGER_ARRAY ar as parameter.
      */
 
-    public static List<Integer> compareTriplets(List<Integer> a, List<Integer> b) {
-        List<Integer> answer = new ArrayList<>(Arrays.asList(0, 0));
-        for (int i = 0; i < a.size(); i++){
-            if (a.get(i) > b.get(i)) {
-                answer.set(0, (answer.get(0)+1));
-                continue; 
-            } else if (a.get(i) < b.get(i)){
-                answer.set(1, (answer.get(1)+1));
-            }
-        }
-        
-        return answer;
+    public static long aVeryBigSum(List<Long> ar) {
+    // Write your code here
+    long answer = 0;
+    for (Long l: ar) {
+     answer += (l);   
+    }
+    
+    return answer;
     }
 
 }
@@ -42,22 +36,16 @@ public class Solution {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        List<Integer> a = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-            .map(Integer::parseInt)
+        int arCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Long> ar = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+            .map(Long::parseLong)
             .collect(toList());
 
-        List<Integer> b = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-            .map(Integer::parseInt)
-            .collect(toList());
+        long result = Result.aVeryBigSum(ar);
 
-        List<Integer> result = Result.compareTriplets(a, b);
-
-        bufferedWriter.write(
-            result.stream()
-                .map(Object::toString)
-                .collect(joining(" "))
-            + "\n"
-        );
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
 
         bufferedReader.close();
         bufferedWriter.close();

@@ -1,4 +1,4 @@
-# Java Stdin and Stdout I
+# Java If-Else
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
 
@@ -53,26 +53,37 @@ Print `Weird` if the number is weird; otherwise, print `Not Weird`.
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-16T12:59:53.785Z  
+**Submitted:** 2026-08-16T13:07:31.146Z  
 
 ```java
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
 import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
 
 public class Solution {
 
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int a = scan.nextInt();
-        int b = scan.nextInt();
-        int c = scan.nextInt();
-        scan.close();
-        // Complete this line
 
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(c);
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int N = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        if (N%2==1){
+            System.out.print("Weird");
+        } else if (N >=2 && N <=5) {
+            System.out.print("Not Weird");
+        } else if (N >= 6 && N<=20){
+            System.out.print("Weird");
+        } else if (N>20) System.out.print("Not Weird");
+        scanner.close();
     }
 }
+
 
 ```
 
